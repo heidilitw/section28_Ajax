@@ -1,0 +1,26 @@
+const loadCommentsBtnElement = document.getElementById("load-comment-btn");
+
+//Ajax to fetching data
+//when triggering a function by eventlistener, JS will automatically gives an event object,
+// which describing the occured event
+
+async function fetchCommentsForPost(event) {
+  const postId = loadCommentsBtnElement.dataset.postid;
+  // const Btn = event.target; 也可以
+  // 通常是這樣子 但當有特殊符號不能被當成普通string  要用back quote  fetch('/posts/.../comments');
+
+  const response = await fetch(`/posts/${postId}/comments`); //Ajax sending httprequest vis JS
+    //fetch function return a promise --> function前加async
+
+  const responseData = await response.json(); //response.body的資訊太多 利用json()方法parse擷取需要的部份 變成object taking time
+
+
+    
+
+
+
+
+
+}
+
+loadCommentsBtnElement.addEventListener("click", fetchCommentsForPost);
